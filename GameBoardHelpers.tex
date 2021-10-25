@@ -6,6 +6,13 @@
   \else 
  \fi 
 }
+\newcommand{\getoffsetdir}[2]{ 
+
+    \pgfmathsetmacro{\varl}{#1}
+    \pgfmathsetmacro{\varr}{#2}
+    \pgfmathparse{\varl>=\varr ? 1 : -1)}
+    \pgfmathresult
+}
 
 
 \newcommand{\drawboxes}[4]{

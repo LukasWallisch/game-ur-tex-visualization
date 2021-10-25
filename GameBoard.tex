@@ -66,13 +66,32 @@
 \NewDocumentCommand{\gameExtraFieldMarkings}{mmmmmmO{3}O{2}O{1}}{
     \setmacros{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
 
-    \drawcircle{\prepareS +1}{\brow}{pattern=custom north west lines,hatchspread=10pt,hatchcolor=green}
-    \drawcircle{\aftermathE -1}{\brow}{pattern=custom north east lines,hatchspread=10pt,hatchcolor=blue}
+    \pgfmathsetmacro\startXPos{\prepareS>=\prepareE ? \prepareS+1 : \prepareS-1}
+    \pgfmathsetmacro\endXPos{\aftermathE>=\aftermathS ? \aftermathE+1 : \aftermathE-1}
+
+    \drawcircle{\startXPos}{\brow}{pattern=custom north west lines,hatchspread=10pt,hatchcolor=green}
+    \drawcircle{\endXPos}{\brow}{pattern=custom north east lines,hatchspread=10pt,hatchcolor=blue}
     \shouldshow{\trow}{
-        \drawcircle{\prepareS +1}{\trow}{pattern=custom north west lines,hatchspread=10pt,hatchcolor=green}
-        \drawcircle{\aftermathE -1}{\trow}{pattern=custom north east lines,hatchspread=10pt,hatchcolor=blue}
+        \drawcircle{\startXPos}{\trow}{pattern=custom north west lines,hatchspread=10pt,hatchcolor=green}
+        \drawcircle{\endXPos}{\trow}{pattern=custom north east lines,hatchspread=10pt,hatchcolor=blue}
     }
 
+}
+
+\NewDocumentCommand{\gameExtraFields}{mmmmmmO{3}O{2}O{1}}{
+    \setmacros{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
+
+    
+    \pgfmathsetmacro\startXPos{\prepareS>=\prepareE ? \prepareS+1 : \prepareS-1}
+    \pgfmathsetmacro\endXPos{\aftermathE>=\aftermathS ? \aftermathE+1 : \aftermathE-1}
+   
+    \drawcircle{\startXPos}{\brow}{}
+    \drawcircle{\endXPos}{\brow}{}
+    
+    \shouldshow{\trow}{
+        \drawcircle{\startXPos}{\trow}{}
+        \drawcircle{\endXPos}{\trow}{}
+    }
 }
 
 
@@ -142,15 +161,5 @@
 }
 
 
-\NewDocumentCommand{\gameExtraFields}{mmmmmmO{3}O{2}O{1}}{
-    \setmacros{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
-   
-    \drawcircle{\prepareS +1}{\brow}{}
-    \drawcircle{\aftermathE -1}{\brow}{}
-    
-    \shouldshow{\trow}{
-        \drawcircle{\prepareS +1}{\trow}{}
-        \drawcircle{\aftermathE -1}{\trow}{}
-    }
-}
+
 
