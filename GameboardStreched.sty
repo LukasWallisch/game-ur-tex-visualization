@@ -1,0 +1,52 @@
+
+
+
+\NewDocumentCommand{\ssetmacros}{mmm}{
+    \pgfmathsetmacro\prepareS{0}
+    \pgfmathsetmacro\prepareE{#1-1}
+    \pgfmathsetmacro\fightS{#1}
+    \pgfmathsetmacro\fightE{{#1+#2-1}}
+    \pgfmathsetmacro\aftermathS{{#1+#2}}
+    \pgfmathsetmacro\aftermathE{{#1+#2+#3-1}}
+
+    \pgfmathsetmacro\trow{1}
+    \pgfmathsetmacro\mrow{.5}
+    \pgfmathsetmacro\brow{0}
+}
+
+\NewDocumentCommand{\sgameur}{mmm}{
+    \ssetmacros{#1}{#2}{#3}
+    \gameur{\prepareS}{\prepareE}{\fightS}{\fightE}{\aftermathS}{\aftermathE}[\trow][\mrow][\brow]
+}
+\NewDocumentCommand{\sgameFieldnames}{mmm}{
+    \ssetmacros{#1}{#2}{#3}
+    \gameFieldnames{\prepareS}{\prepareE}{\fightS}{\fightE}{\aftermathS}{\aftermathE}[\trow][\mrow][\brow]
+}
+\NewDocumentCommand{\sgameExtraFieldnames}{mmm}{
+    \ssetmacros{#1}{#2}{#3}
+    \gameExtraFieldnames{\prepareS}{\prepareE}{\fightS}{\fightE}{\aftermathS}{\aftermathE}[\trow][\mrow][\brow]
+}
+\NewDocumentCommand{\sgameExtraFieldMarkings}{mmm}{
+    \ssetmacros{#1}{#2}{#3}
+    \gameExtraFieldMarkings{\prepareS}{\prepareE}{\fightS}{\fightE}{\aftermathS}{\aftermathE}[\trow][\mrow][\brow]
+}
+\NewDocumentCommand{\sgameMarkings}{mmm}{
+    \ssetmacros{#1}{#2}{#3}
+    \gameMarkings{\prepareS}{\prepareE}{\fightS}{\fightE}{\aftermathS}{\aftermathE}[\trow][\mrow][\brow]
+}
+\NewDocumentCommand{\sgameSavepoints}{mmm}{
+    \ssetmacros{#1}{#2}{#3}
+    \gameSavepoints{\prepareS}{\prepareE}{\fightS}{\fightE}{\aftermathS}{\aftermathE}[\trow][\mrow][\brow]
+}
+\NewDocumentCommand{\sgameDirections}{mmm}{
+    \ssetmacros{#1}{#2}{#3}
+    \gameDirections{\prepareS}{\prepareE}{\fightS}{\fightE}{\aftermathS}{\aftermathE}[\trow][\mrow][\brow]
+}
+\NewDocumentCommand{\sgameFill}{mmm}{
+    \ssetmacros{#1}{#2}{#3}
+    \gameFill{\prepareS}{\prepareE}{\fightS}{\fightE}{\aftermathS}{\aftermathE}[\trow][\mrow][\brow]
+}
+\NewDocumentCommand{\sgameExtraFields}{mmm}{
+    \ssetmacros{#1}{#2}{#3}
+    \gameExtraFields{\prepareS}{\prepareE}{\fightS}{\fightE}{\aftermathS}{\aftermathE}[\trow][\mrow][\brow]
+}
