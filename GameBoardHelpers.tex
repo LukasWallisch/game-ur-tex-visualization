@@ -1,0 +1,77 @@
+\newcommand{\shouldshow}[2]{ 
+\pgfmathsetmacro{\var}{#1}
+\pgfmathparse{ifthenelse(\var>=0,1,0)} 
+\ifdim\pgfmathresult pt= 1 pt 
+   #2
+  \else 
+ \fi 
+}
+
+
+\newcommand{\drawboxes}[4]{
+    \pgfmathsetmacro \start {{#1}}
+    \pgfmathsetmacro \myend {{#2}}
+    \pgfmathsetmacro \y {{#3}}
+
+    \foreach \x in {\start,...,\myend} {
+            \draw[#4] (\x,\y) rectangle (\x +1,\y +1);
+        }
+}
+\newcommand{\drawcircle}[3]{
+    \pgfmathsetmacro \x {{#1}}
+    \pgfmathsetmacro \y {{#2}}
+
+   
+    \draw[#3] (\x+.5,\y+.5) circle[radius=.5];
+}
+
+\newcommand{\drawstar}[3]{% x,y, options
+\pgfmathsetmacro \x {{#1}}
+\pgfmathsetmacro \y {{#2}}
+\draw (\x +.5, \y +.5) node[star, star points=8, star point ratio=1.5, draw, inner sep=5]{};
+}
+
+\newcommand{\fillboxes}[4]{
+    \pgfmathsetmacro \start {{#1}}
+    \pgfmathsetmacro \myend {{#2}}
+    \pgfmathsetmacro \y {{#3}}
+
+    \foreach \x in {\start,...,\myend} {
+            \fill[#4] (\x,\y) rectangle (\x +1,\y +1);
+        }
+}
+
+\newcommand{\drawarrows}[5][.5]{
+    \pgfmathsetmacro \start {{#2}}
+    \pgfmathsetmacro \myend {{#3}}
+    \pgfmathsetmacro \adist {{1/abs(#3-#2)}}
+    \pgfmathsetmacro \y {{#4}}
+    \pgfmathsetmacro \offset {{#1}}
+
+
+    \draw[gpstyle={start \adist end 1}, #5 ] (\start+\offset,\y+\offset) -> (\myend+\offset,\y +\offset);
+    % \foreach \x in {\start,...,\myend} {
+    %     \draw[gpstyle={start .5 end 1}, #4 ] (\x,\y+.5) -> (\x +1,\y +.5);
+    % }
+
+    % \draw[gpstyle={start adist end 1},red ] (0.5,1) -> (0.5,1.5) -> (7.5,1.5) -> (7.5,1) ;
+    
+}
+\newcommand{\drawarrowsV}[5]{
+    \pgfmathsetmacro \xstart {{#1+.5}}
+    \pgfmathsetmacro \ystart {{#2+.5}}
+    \pgfmathsetmacro \xend {{#3+.5}}
+    \pgfmathsetmacro \yend {{#4+.5}}
+    \pgfmathsetmacro \adist {{1/sqrt((#2-#1)^2+(#4-#3)^2)}}
+
+    \draw[gpstyle={start 1 end 1}, #5 ] (\xstart,\ystart) -> (\xend,\yend);    
+}
+
+\newcommand{\drawmeasure}[8][.5]{
+    \pgfmathsetmacro \xstart {{#2+.5}}
+    \pgfmathsetmacro \ystart {{#3 +.5}}
+    \pgfmathsetmacro \xend {{#4+.5}}
+    \pgfmathsetmacro \yend {{#5+.5}}
+
+    \draw[|-|,thick, #6 ,rounded corners=8pt ] (\xstart,\ystart) -> (\xend,\yend) node[pos=#1,#7]{#8};    
+}

@@ -1,0 +1,243 @@
+% \documentclass{standalone}
+\usepackage{tikz}
+\usepackage{ifthen}
+
+\usepackage{subfiles} % Best loaded last in the preamble
+
+\usetikzlibrary{math}
+\usetikzlibrary{arrows}
+\usetikzlibrary{patterns}
+\usetikzlibrary{patterns.meta}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{arrows.meta, bending}
+\usetikzlibrary{decorations.markings}
+
+
+\input{hatchpatterns.tex}
+\input{GameBoardHelpers.tex}
+
+\tikzset{
+    % gamepathStyle
+    gpstyle/.style args={start#1end#2}{
+            decoration={markings,
+                    mark= between positions #1 and #2 step 1cm with {\arrow{Straight Barb}},
+                },
+            rounded corners=0.314cm,
+            thick,
+            postaction={decorate}
+        },
+    pathstart/.style={{Circle[open]}-},
+    pathend/.style={-Circle},
+    nwlines/.style={ pattern=north north east lines, pattern color=blue },
+}
+
+\NewDocumentCommand{\gameExtraFields}{m m m O{3} O{2} O{1}}{
+    \pgfmathsetmacro\trow{#4}
+    \pgfmathsetmacro\mrow{#5}
+    \pgfmathsetmacro\brow{#6}
+
+    \pgfmathsetmacro\prepareS{{#1-1}}
+    \pgfmathsetmacro\prepareE{0}
+    \pgfmathsetmacro\fightS{0}
+    \pgfmathsetmacro\fightE{{#2-1}}
+    \pgfmathsetmacro\aftermathS{{#2-1}}
+    \pgfmathsetmacro\aftermathE{{#2-#3}}
+
+    \drawcircle{\prepareS +1}{\brow}{}
+    \drawcircle{\aftermathE -1}{\brow}{}
+    
+    \shouldshow{\trow}{
+        \drawcircle{\prepareS +1}{\trow}{}
+        \drawcircle{\aftermathE -1}{\trow}{}
+    }
+}
+\NewDocumentCommand{\gameExtraFieldMarkings}{mmmO{3}O{2}O{1}}{
+    \pgfmathsetmacro\trow{#4}
+    \pgfmathsetmacro\mrow{#5}
+    \pgfmathsetmacro\brow{#6}
+
+    \pgfmathsetmacro\prepareS{{#1-1}}
+    \pgfmathsetmacro\prepareE{0}
+    \pgfmathsetmacro\fightS{0}
+    \pgfmathsetmacro\fightE{{#2-1}}
+    \pgfmathsetmacro\aftermathS{{#2-1}}
+    \pgfmathsetmacro\aftermathE{{#2-#3}}
+
+    \drawcircle{\prepareS +1}{\brow}{pattern=custom north west lines,hatchspread=10pt,hatchcolor=green}
+    \drawcircle{\aftermathE -1}{\brow}{pattern=custom north east lines,hatchspread=10pt,hatchcolor=blue}
+    \shouldshow{\trow}{
+        \drawcircle{\prepareS +1}{\trow}{pattern=custom north west lines,hatchspread=10pt,hatchcolor=green}
+        \drawcircle{\aftermathE -1}{\trow}{pattern=custom north east lines,hatchspread=10pt,hatchcolor=blue}
+    }
+
+}
+
+
+
+\NewDocumentCommand{\gameMarkings}{m m m O{3} O{2} O{1}}{
+    \pgfmathsetmacro\trow{#4}
+    \pgfmathsetmacro\mrow{#5}
+    \pgfmathsetmacro\brow{#6}
+
+    \pgfmathsetmacro\prepareS{{#1-1}}
+    \pgfmathsetmacro\prepareE{0}
+    \pgfmathsetmacro\fightS{0}
+    \pgfmathsetmacro\fightE{{#2-1}}
+    \pgfmathsetmacro\aftermathS{{#2-1}}
+    \pgfmathsetmacro\aftermathE{{#2-#3}}
+
+    \drawmeasure{\prepareS}{\brow}{\prepareE}{\brow}{green}{below}{prepare};
+    \drawmeasure{\prepareE}{\brow}{\fightS}{\mrow}{green}{below}{};
+    \drawmeasure[.3]{\fightS}{\mrow}{\fightE}{\mrow}{red}{below}{fight};
+    \drawmeasure{\fightE}{\mrow}{\aftermathS}{\brow}{blue}{below}{};
+    \drawmeasure{\aftermathS}{\brow}{\aftermathE}{\brow}{blue}{below}{aftermath};
+}
+
+
+
+\NewDocumentCommand{\gameSavepoints}{m m m O{3} O{2} O{1}}{
+    \pgfmathsetmacro\trow{#4}
+    \pgfmathsetmacro\mrow{#5}
+    \pgfmathsetmacro\brow{#6}
+
+    \pgfmathsetmacro\prepareS{{#1-1}}
+    \pgfmathsetmacro\prepareE{0}
+    \pgfmathsetmacro\fightS{0}
+    \pgfmathsetmacro\fightE{{#2-1}}
+    \pgfmathsetmacro\aftermathS{{#2-1}}
+    \pgfmathsetmacro\aftermathE{{#2-#3}}
+
+    \drawstar{\prepareS}{\brow}{}
+    \drawstar{4}{\mrow}{}
+    \drawstar{\prepareS}{\brow}{}
+    \drawstar{\aftermathS}{\brow}{}
+    
+    \shouldshow{\trow}{
+        \drawstar{\aftermathS}{\trow}{}
+        \drawstar{\prepareS}{\trow}{}
+    }
+   }
+
+
+
+\NewDocumentCommand{\gameDirections}{m m m O{3} O{2} O{1}}{
+    \pgfmathsetmacro\trow{#4}
+    \pgfmathsetmacro\mrow{#5}
+    \pgfmathsetmacro\brow{#6}
+
+    \pgfmathsetmacro\prepareS{{#1-1}}
+    \pgfmathsetmacro\prepareE{0}
+    \pgfmathsetmacro\fightS{0}
+    \pgfmathsetmacro\fightE{{#2-1}}
+    \pgfmathsetmacro\aftermathS{{#2-1}}
+    \pgfmathsetmacro\aftermathE{{#2-#3}}
+
+    \drawarrows{\prepareS}{\prepareE}{\brow}{pink}
+    
+    \drawarrowsV{\prepareE}{\trow}{\fightS}{\mrow}{red!50, dashed}
+    \drawarrowsV{\prepareE}{\brow}{\fightS}{\mrow}{red}
+    
+    \drawarrows{\fightS}{\fightE}{\mrow}{red}
+    
+    \drawarrowsV{\fightE}{\mrow}{\aftermathS}{\brow}{pink}
+    
+    \drawarrows{\aftermathS}{\aftermathE}{\brow}{pink}
+    
+    \shouldshow{\trow}{
+        \drawarrows{\prepareS}{\prepareE}{\trow}{pink!50, dashed}
+        \drawarrowsV{\fightE}{\mrow}{\aftermathS}{\trow}{pink!50, dashed}
+        \drawarrows{\aftermathS}{\aftermathE}{\trow}{pink!50, dashed}
+    }
+}
+
+\NewDocumentCommand{\gameFill}{m m m O{3} O{2} O{1}}{
+    \pgfmathsetmacro\trow{#4}
+    \pgfmathsetmacro\mrow{#5}
+    \pgfmathsetmacro\brow{#6}
+
+    \pgfmathsetmacro\prepareS{{#1-1}}
+    \pgfmathsetmacro\prepareE{0}
+    \pgfmathsetmacro\fightS{0}
+    \pgfmathsetmacro\fightE{{#2-1}}
+    \pgfmathsetmacro\aftermathS{{#2-1}}
+    \pgfmathsetmacro\aftermathE{{#2-#3}}
+
+
+
+    \drawboxes{\prepareS}{\prepareE}{\brow}{pattern=custom north west lines,hatchspread=10pt,hatchcolor=green}
+    
+    \drawboxes{\fightS}{\fightE}{\mrow}{pattern=custom vertical lines,hatchspread=5pt,hatchcolor=red}
+    
+    \drawboxes{\aftermathS}{\aftermathE}{\brow}{pattern=custom north east lines,hatchspread=10pt,hatchcolor=blue}
+    
+    \shouldshow{\trow}{
+        \drawboxes{\prepareS}{\prepareE}{\trow}{pattern=custom north west lines,hatchspread=10pt,hatchcolor=green}
+        \drawboxes{\aftermathS}{\aftermathE}{\trow}{pattern=custom north east lines,hatchspread=10pt,hatchcolor=blue}
+    }
+
+}
+\NewDocumentCommand{\gameur}{m m m O{3} O{2} O{1}}{
+    \pgfmathsetmacro\trow{#4}
+    \pgfmathsetmacro\mrow{#5}
+    \pgfmathsetmacro\brow{#6}
+
+    \pgfmathsetmacro\prepareS{{#1-1}}
+    \pgfmathsetmacro\prepareE{0}
+    \pgfmathsetmacro\fightS{0}
+    \pgfmathsetmacro\fightE{{#2-1}}
+    \pgfmathsetmacro\aftermathS{{#2-1}}
+    \pgfmathsetmacro\aftermathE{{#2-#3}}
+
+
+
+    \drawboxes{\prepareS}{\prepareE}{\brow}{}
+    
+    \drawboxes{\fightS}{\fightE}{\mrow}{}
+    
+    \drawboxes{\aftermathS}{\aftermathE}{\brow}{}
+    
+    \shouldshow{\trow}{
+        \drawboxes{\prepareS}{\prepareE}{\trow}{}
+        \drawboxes{\aftermathS}{\aftermathE}{\trow}{}
+    }
+
+}
+
+
+
+% \begin{document}
+% % xx   xxx
+% % xxxxxxxx
+% % xx   xxx
+% \resizebox{\columnwidth}{!}{
+%     \begin{tikzpicture}
+%         \gameur{10}{8}{4}
+%     \end{tikzpicture}
+% }
+
+% % \begin{tikzpicture}
+
+% %     \gameur{2}{8}{4}
+
+% %     % \drawboxes{0}{3}{4}{thick}
+
+
+% %     % \draw[pathstart, gpstyle={start 1cm end 1},pink!50, dashed] (1.5,2.5) -> (0.5,2.5) -> (0.5,2) ;
+% %     % \draw[gpstyle={start 0.5cm end 1},red!50, dashed] (0.5,2) -> (0.5,1.5) -> (7.5,1.5) -> (7.5,2) ;
+% %     % \draw[pathend, gpstyle={start 0.5cm end 1},pink!50, dashed] (7.5,2) -> (7.5,2.5) -> (4.5,2.5) ;
+
+% %     % \draw[pathstart, gpstyle={start 1cm end 1},pink] (1.5,0.5) -> (0.5,0.5) -> (0.5,1) ;
+% %     % \draw[gpstyle={start 0.5cm end 1},red ] (0.5,1) -> (0.5,1.5) -> (7.5,1.5) -> (7.5,1) ;
+% %     % \draw[pathend, gpstyle={start 0.5cm end 1},pink ] (7.5,1) -> (7.5,0.5) -> (4.5,0.5) ;
+
+% %     % \draw[|-|,thick, green ,rounded corners=8pt] (1.5,0) -> (0.5,0) node[pos=0.5,below]{v};
+% %     % \draw[|-|,thick, blue ,rounded corners=8pt] (0.5,2) -> (7.5,2) node[pos=0.5,above]{k};
+% %     % \draw[|-|,thick, blue ,rounded corners=8pt] (5.5,0) -> (7.5,0) node[pos=0.5,below]{e};
+
+
+% %     % \foreach \x/\xtext in {0, 10}
+% %     % \draw (\x cm,1pt) -- (\x cm,-1pt) node[anchor=north,fill=white] {$\xtext$};
+% %     % \foreach \y/\ytext in {0, 5}
+% %     % \draw (1pt,\y cm) -- (-1pt,\y cm) node[anchor=east,fill=white] {$\ytext$};
+% % \end{tikzpicture}
+% \end{document}
