@@ -97,7 +97,7 @@
 
 }
 
-\NewDocumentCommand{\gameExtraFieldMarkings}{mmmmmmO{3}O{2}O{1}}{
+\NewDocumentCommand{\gameExtraFieldsFill}{mmmmmmO{3}O{2}O{1}}{
     \setmacros{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
 
     \drawcircle{\startXPos}{\brow}{pattern=custom north west lines,hatchspread=10pt,hatchcolor=green}
@@ -127,11 +127,13 @@
 \NewDocumentCommand{\gameMarkings}{mmmmmmO{3}O{2}O{1}}{
     \setmacros{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
 
+    \drawmeasure{\startXPos}{\brow}{\prepareS}{\brow}{green}{below}{};
     \drawmeasure{\prepareS}{\brow}{\prepareE}{\brow}{green}{below}{prepare};
     \drawmeasure{\prepareE}{\brow}{\fightS}{\mrow}{red}{below}{};
     \drawmeasure[.3]{\fightS}{\mrow}{\fightE}{\mrow}{red}{below}{fight};
     \drawmeasure{\fightE}{\mrow}{\aftermathS}{\brow}{blue}{below}{};
     \drawmeasure{\aftermathS}{\brow}{\aftermathE}{\brow}{blue}{below}{aftermath};
+    \drawmeasure{\aftermathE}{\brow}{\endXPos}{\brow}{blue}{below}{};
 }
 
 
