@@ -18,6 +18,14 @@
     \fsetmacros{#1}{#2}{#3}
     \gameur{\prepareS}{\prepareE}{\fightS}{\fightE}{\aftermathS}{\aftermathE}[\trow][\mrow][\brow]
 }
+\NewDocumentCommand{\fgameFieldnames}{mmm}{
+    \fsetmacros{#1}{#2}{#3}
+    \gameFieldnames{\prepareS}{\prepareE}{\fightS}{\fightE}{\aftermathS}{\aftermathE}[\trow][\mrow][\brow]
+}
+\NewDocumentCommand{\fgameExtraFieldnames}{mmm}{
+    \fsetmacros{#1}{#2}{#3}
+    \gameExtraFieldnames{\prepareS}{\prepareE}{\fightS}{\fightE}{\aftermathS}{\aftermathE}[\trow][\mrow][\brow]
+}
 \NewDocumentCommand{\fgameExtraFieldMarkings}{mmm}{
     \fsetmacros{#1}{#2}{#3}
     \gameExtraFieldMarkings{\prepareS}{\prepareE}{\fightS}{\fightE}{\aftermathS}{\aftermathE}[\trow][\mrow][\brow]

@@ -43,6 +43,13 @@
     \pgfmathsetmacro\trow{#7}
     \pgfmathsetmacro\mrow{#8}
     \pgfmathsetmacro\brow{#9}
+
+    \pgfmathsetmacro\startXPos{\prepareS>=\prepareE ? \prepareS+1 : \prepareS-1}
+    \pgfmathsetmacro\endXPos{\aftermathE>=\aftermathS ? \aftermathE+1 : \aftermathE-1}
+
+    \pgfmathsetmacro\prepareLen{int(abs(\prepareE-\prepareS)+1)}
+    \pgfmathsetmacro\fightLen{int(abs(\fightE-\fightS)+1)}
+    \pgfmathsetmacro\aftermathLen{int(abs(\aftermathE-\aftermathS)+1)}
 }
 
 
@@ -62,12 +69,36 @@
     }
 
 }
+\NewDocumentCommand{\gameFieldnames}{mmmmmmO{3}O{2}O{1}}{
+    \setmacros{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
+    
+    \drawfieldnames{\prepareS}{\prepareE}{\brow}{1}
+    \drawfieldnames{\fightS}{\fightE}{\mrow}{\prepareLen+1}
+    \drawfieldnames{\aftermathS}{\aftermathE}{\brow}{\prepareLen+\fightLen+1}
+    
+    
+    \shouldshow{\trow}{
+        \drawfieldnames{\aftermathS}{\aftermathE}{\trow}{\prepareLen+\fightLen+1}
+        \drawfieldnames{\prepareS}{\prepareE}{\trow}{1}
+    }
+
+}
+\NewDocumentCommand{\gameExtraFieldnames}{mmmmmmO{3}O{2}O{1}}{
+    \setmacros{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
+    
+    \drawfieldnames{\startXPos}{\startXPos}{\brow}{0}
+    \drawfieldnames{\endXPos}{\endXPos}{\brow}{\prepareLen+\fightLen+\aftermathLen+1}
+    
+    
+    \shouldshow{\trow}{
+        \drawfieldnames{\startXPos}{\startXPos}{\trow}{+1}
+        \drawfieldnames{\endXPos}{\endXPos}{\trow}{+1}
+    }
+
+}
 
 \NewDocumentCommand{\gameExtraFieldMarkings}{mmmmmmO{3}O{2}O{1}}{
     \setmacros{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
-
-    \pgfmathsetmacro\startXPos{\prepareS>=\prepareE ? \prepareS+1 : \prepareS-1}
-    \pgfmathsetmacro\endXPos{\aftermathE>=\aftermathS ? \aftermathE+1 : \aftermathE-1}
 
     \drawcircle{\startXPos}{\brow}{pattern=custom north west lines,hatchspread=10pt,hatchcolor=green}
     \drawcircle{\endXPos}{\brow}{pattern=custom north east lines,hatchspread=10pt,hatchcolor=blue}
@@ -81,9 +112,6 @@
 \NewDocumentCommand{\gameExtraFields}{mmmmmmO{3}O{2}O{1}}{
     \setmacros{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
 
-    
-    \pgfmathsetmacro\startXPos{\prepareS>=\prepareE ? \prepareS+1 : \prepareS-1}
-    \pgfmathsetmacro\endXPos{\aftermathE>=\aftermathS ? \aftermathE+1 : \aftermathE-1}
    
     \drawcircle{\startXPos}{\brow}{}
     \drawcircle{\endXPos}{\brow}{}

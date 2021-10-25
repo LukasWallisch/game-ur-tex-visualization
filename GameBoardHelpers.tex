@@ -24,6 +24,19 @@
             \draw[#4] (\x,\y) rectangle (\x +1,\y +1);
         }
 }
+\newcommand{\drawfieldnames}[4]{
+    \pgfmathsetmacro \start {{#1}}
+    \pgfmathsetmacro \myend {{#2}}
+    \pgfmathsetmacro \y {{#3}}
+    \pgfmathsetmacro \startvalue {{int(#4)}}
+    \xdef\id{\startvalue}
+    \foreach \x in {\start,...,\myend} {
+        
+        \node at (\x+.5 ,\y +.5) {\textbf{\id}};
+        \pgfmathparse{int(\id+1)}
+        \xdef\id{\pgfmathresult}
+        }
+}
 \newcommand{\drawcircle}[3]{
     \pgfmathsetmacro \x {{#1}}
     \pgfmathsetmacro \y {{#2}}
