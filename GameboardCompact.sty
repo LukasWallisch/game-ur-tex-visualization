@@ -1,0 +1,44 @@
+
+
+
+\NewDocumentCommand{\csetmacros}{mmmmmm}{
+    \pgfmathsetmacro\prepareS{{#1-1}}
+    \pgfmathsetmacro\prepareE{0}
+    \pgfmathsetmacro\fightS{0}
+    \pgfmathsetmacro\fightE{{#2-1}}
+    \pgfmathsetmacro\aftermathS{{#2-1}}
+    \pgfmathsetmacro\aftermathE{{#2-#3}}
+
+    \pgfmathsetmacro\trow{#4}
+    \pgfmathsetmacro\mrow{#5}
+    \pgfmathsetmacro\brow{#6}
+}
+
+\NewDocumentCommand{\cgameur}{mmmO{3}O{2}O{1}}{
+    \csetmacros{#1}{#2}{#3}{#4}{#5}{#6}
+    \gameur{\prepareS}{\prepareE}{\fightS}{\fightE}{\aftermathS}{\aftermathE}[\trow][\mrow][\brow]
+}
+\NewDocumentCommand{\cgameExtraFieldMarkings}{mmmO{3}O{2}O{1}}{
+    \csetmacros{#1}{#2}{#3}{#4}{#5}{#6}
+    \gameExtraFieldMarkings{\prepareS}{\prepareE}{\fightS}{\fightE}{\aftermathS}{\aftermathE}[\trow][\mrow][\brow]
+}
+\NewDocumentCommand{\cgameMarkings}{mmmO{3}O{2}O{1}}{
+    \csetmacros{#1}{#2}{#3}{#4}{#5}{#6}
+    \gameMarkings{\prepareS}{\prepareE}{\fightS}{\fightE}{\aftermathS}{\aftermathE}[\trow][\mrow][\brow]
+}
+\NewDocumentCommand{\cgameSavepoints}{mmmO{3}O{2}O{1}}{
+    \csetmacros{#1}{#2}{#3}{#4}{#5}{#6}
+    \gameSavepoints{\prepareS}{\prepareE}{\fightS}{\fightE}{\aftermathS}{\aftermathE}[\trow][\mrow][\brow]
+}
+\NewDocumentCommand{\cgameDirections}{mmmO{3}O{2}O{1}}{
+    \csetmacros{#1}{#2}{#3}{#4}{#5}{#6}
+    \gameDirections{\prepareS}{\prepareE}{\fightS}{\fightE}{\aftermathS}{\aftermathE}[\trow][\mrow][\brow]
+}
+\NewDocumentCommand{\cgameFill}{mmmO{3}O{2}O{1}}{
+    \csetmacros{#1}{#2}{#3}{#4}{#5}{#6}
+    \gameFill{\prepareS}{\prepareE}{\fightS}{\fightE}{\aftermathS}{\aftermathE}[\trow][\mrow][\brow]
+}
+\NewDocumentCommand{\cgameExtraFields}{mmmO{3}O{2}O{1}}{
+    \csetmacros{#1}{#2}{#3}{#4}{#5}{#6}
+    \gameExtraFields{\prepareS}{\prepareE}{\fightS}{\fightE}{\aftermathS}{\aftermathE}[\trow][\mrow][\brow]
+}

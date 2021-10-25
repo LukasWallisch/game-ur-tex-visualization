@@ -2,75 +2,85 @@
 \usepackage{listings}
 
 \input{GameBoard.tex}
+\input{GameboardCompact.sty}
 
 
 \begin{document}
 
-\begin{lstlisting}[language=TeX]
-    \begin{tikzpicture}
-        \gameur{2}{8}{4}
-        \gameMarkings{2}{8}{4}
-        \gameExtraFields{2}{8}{4}
-        \gameSavepoints{2}{8}{4}
+
+% \begin{lstlisting}[language=TeX]
+%     \begin{tikzpicture}
+%         \cgameur{2}{8}{4}
+%         \gameFill{2}{8}{4}
+%         \gameDirections{2}{8}{4}
+%         \gameMarkings{2}{8}{4}
+%         \gameExtraFieldMarkings{2}{8}{4}
+%         \gameSavepoints{2}{8}{4}
         
-    \end{tikzpicture}
-\end{lstlisting}
+%     \end{tikzpicture}
+% \end{lstlisting}
 
 
+% \begin{tikzpicture}
+%     \cgameur{2}{8}{4}
+%     \gameFill{2}{8}{4}
+%     \gameDirections{2}{8}{4}
+%     \gameMarkings{2}{8}{4}
+%     \gameExtraFieldMarkings{2}{8}{4}
+%     \gameSavepoints{2}{8}{4}
+    
+% \end{tikzpicture}
+
+
+% \begin{lstlisting}[language=TeX]
+%     \begin{tikzpicture}
+%         \cgameur{2}{8}{4}[-1]
+%         \gameFill{2}{8}{4}[-1]
+%         \gameDirections{2}{8}{4}[-1]
+%         \gameMarkings{2}{8}{4}[-1]
+%         \gameExtraFieldMarkings{2}{8}{4}[-1]
+%         \gameSavepoints{2}{8}{4}[-1]
+        
+%     \end{tikzpicture}
+% \end{lstlisting}
+
+
+
+% \begin{tikzpicture}
+%     \cgameur{2}{8}{4}[-1]
+%     \gameFill{2}{8}{4}[-1]
+%     \gameDirections{2}{8}{4}[-1]
+%     \gameMarkings{2}{8}{4}[-1]
+%     \gameExtraFieldMarkings{2}{8}{4}[-1]
+%     \gameSavepoints{2}{8}{4}[-1]
+    
+% \end{tikzpicture}
+
+
+% test
 
 \begin{tikzpicture}
-    \gameur{2}{8}{4}
-    \gameMarkings{2}{8}{4}
-    \gameExtraFields{2}{8}{4}
-    \gameSavepoints{2}{8}{4}
+    \cgameur{2}{8}{4}
+    \cgameFill{2}{8}{4}
+    \cgameDirections{2}{8}{4}
+    \cgameMarkings{2}{8}{4}
+    \cgameExtraFieldMarkings{2}{8}{4}
+    \cgameExtraFields{2}{8}{4}
+    \cgameSavepoints{2}{8}{4}
     
 \end{tikzpicture}
 
 
-\begin{lstlisting}[language=TeX]
-    \begin{tikzpicture}
-        \gameur{2}{8}{4}
-        \gameFill{2}{8}{4}
-        \gameMarkings{2}{8}{4}
-        \gameExtraFieldMarkings{2}{8}{4}
-        
-    \end{tikzpicture}
-\end{lstlisting}
-
-
 \begin{tikzpicture}
-    \gameur{2}{8}{4}
-    \gameFill{2}{8}{4}
-    \gameMarkings{2}{8}{4}
-    \gameExtraFieldMarkings{2}{8}{4}
+    \cgameur{2}{8}{4}[-1]
+    \cgameFill{2}{8}{4}[-1]
+    \cgameDirections{2}{8}{4}[-1]
+    \cgameMarkings{2}{8}{4}[-1]
+    \cgameExtraFieldMarkings{2}{8}{4}[-1]
+    \cgameExtraFields{2}{8}{4}[-1]
+    \cgameSavepoints{2}{8}{4}[-1]
     
 \end{tikzpicture}
-
-
-\begin{lstlisting}[language=TeX]
-    \begin{tikzpicture}
-        \gameur{2}{8}{4}[-1]
-        \gameFill{2}{8}{4}[-1]
-        \gameMarkings{2}{8}{4}[-1]
-        \gameExtraFieldMarkings{2}{8}{4}[-1]
-        \gameSavepoints{2}{8}{4}[-1]
-        
-    \end{tikzpicture}
-\end{lstlisting}
-
-
-
-\begin{tikzpicture}
-    \gameur{2}{8}{4}[-1]
-    \gameFill{2}{8}{4}[-1]
-    \gameMarkings{2}{8}{4}[-1]
-    \gameExtraFieldMarkings{2}{8}{4}[-1]
-    \gameSavepoints{2}{8}{4}[-1]
-    
-\end{tikzpicture}
-
-
-test
 
 
 \end{document}
