@@ -54,7 +54,7 @@
 
 
 
-\NewDocumentCommand{\gameur}{mmmmmmO{3}O{2}O{1}}{
+\NewDocumentCommand{\gameur}{mmmmmmmmm}{
     \setmacros{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
     
     \drawboxes{\prepareS}{\prepareE}{\brow}{}
@@ -69,7 +69,7 @@
     }
 
 }
-\NewDocumentCommand{\gameFieldnames}{mmmmmmO{3}O{2}O{1}}{
+\NewDocumentCommand{\gameFieldnames}{mmmmmmmmm}{
     \setmacros{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
     
     \drawfieldnames{\prepareS}{\prepareE}{\brow}{1}
@@ -83,7 +83,7 @@
     }
 
 }
-\NewDocumentCommand{\gameExtraFieldnames}{mmmmmmO{3}O{2}O{1}}{
+\NewDocumentCommand{\gameExtraFieldnames}{mmmmmmmmm}{
     \setmacros{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
     
     \drawfieldnames{\startXPos}{\startXPos}{\brow}{0}
@@ -97,7 +97,7 @@
 
 }
 
-\NewDocumentCommand{\gameExtraFieldsFill}{mmmmmmO{3}O{2}O{1}}{
+\NewDocumentCommand{\gameExtraFieldsFill}{mmmmmmmmm}{
     \setmacros{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
 
     \drawcircle{\startXPos}{\brow}{pattern=custom north west lines,hatchspread=10pt,hatchcolor=green}
@@ -109,7 +109,7 @@
 
 }
 
-\NewDocumentCommand{\gameExtraFields}{mmmmmmO{3}O{2}O{1}}{
+\NewDocumentCommand{\gameExtraFields}{mmmmmmmmm}{
     \setmacros{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
 
    
@@ -124,7 +124,7 @@
 
 
 
-\NewDocumentCommand{\gameMarkings}{mmmmmmO{3}O{2}O{1}}{
+\NewDocumentCommand{\gameMarkings}{mmmmmmmmm}{
     \setmacros{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
 
     \drawmeasure{\startXPos}{\brow}{\prepareS}{\brow}{green}{below}{};
@@ -138,7 +138,7 @@
 
 
 
-\NewDocumentCommand{\gameSavepoints}{mmmmmmO{3}O{2}O{1}}{
+\NewDocumentCommand{\gameSavepoints}{mmmmmmmmm}{
    \setmacros{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
     \drawstar{\prepareS}{\brow}{}
     \drawstar{4}{\mrow}{}
@@ -153,7 +153,7 @@
 
 
 
-\NewDocumentCommand{\gameDirections}{mmmmmmO{3}O{2}O{1}}{
+\NewDocumentCommand{\gameDirections}{mmmmmmmmm}{
     \setmacros{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
 
     \drawarrows{\prepareS}{\prepareE}{\brow}{pink}
@@ -174,7 +174,7 @@
     }
 }
 
-\NewDocumentCommand{\gameFill}{mmmmmmO{3}O{2}O{1}}{
+\NewDocumentCommand{\gameFill}{mmmmmmmmm}{
    \setmacros{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
 
     \drawboxes{\prepareS}{\prepareE}{\brow}{pattern=custom north west lines,hatchspread=10pt,hatchcolor=green}
