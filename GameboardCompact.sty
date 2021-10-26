@@ -14,9 +14,9 @@
     \pgfmathsetmacro\brow{#6}
 }
 
-\NewDocumentCommand{\cgameur}{mmmO{3}O{2}O{1}}{
+\NewDocumentCommand{\@cgameur}{mmmO{3}O{2}O{1}}{
     \csetmacros{#1}{#2}{#3}{#4}{#5}{#6}
-    \gameur{\prepareS}{\prepareE}{\fightS}{\fightE}{\aftermathS}{\aftermathE}{\trow}{\mrow}{\brow}
+    \@gameur{\prepareS}{\prepareE}{\fightS}{\fightE}{\aftermathS}{\aftermathE}{\trow}{\mrow}{\brow}
 }
 \NewDocumentCommand{\cgameFieldnames}{mmmO{3}O{2}O{1}}{
     \csetmacros{#1}{#2}{#3}{#4}{#5}{#6}

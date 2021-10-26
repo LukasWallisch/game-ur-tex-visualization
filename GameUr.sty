@@ -1,0 +1,63 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{gameUr}[2021/10/26 GameUr Visualisation]
+
+\RequirePackage{tikz}
+\RequirePackage{ifthen}
+\RequirePackage{xparse}
+
+\RequirePackage{subfiles} % Best loaded last in the preamble
+
+\usetikzlibrary{math}
+\usetikzlibrary{arrows}
+\usetikzlibrary{patterns}
+\usetikzlibrary{patterns.meta}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{arrows.meta, bending}
+\usetikzlibrary{decorations.markings}
+
+
+\input{GameBoard.sty}
+\input{GameboardFlat.sty}
+\input{GameboardStreched.sty}
+\input{GameboardCompact.sty}
+
+
+
+
+        
+\ExplSyntaxOn
+        
+\DeclareExpandableDocumentCommand \choose {mmmmmmm}
+ {
+  \str_case:nnF {#1}
+   {{ s } { #5{#2}{#3}{#4} }
+    { f } { #6{#2}{#3}{#4} }
+    { c } { #7{#2}{#3}{#4} }}
+   {}
+ }
+
+ \NewDocumentCommand{\optionT}{mmm}
+ { \luwas_instring:nnn { #1 } { #2 } { #3 } }
+    \tl_new:N \l__luwas_instring_test_tl
+    \cs_new_protected:Nn \luwas_instring:nnn
+    {
+        \tl_set:Nn \l__luwas_instring_test_tl { #1 }
+        \regex_match:nnT { \u{l__luwas_instring_test_tl} } { #2 } { #3 }
+    }
+         
+        
+\ExplSyntaxOff
+
+
+\NewDocumentCommand{\gameur}{mmmmO{}}{
+    \begin{tikzpicture}
+        \choose{#1}{#2}{#3}{#4}{\sgameur}{\fgameur}{\@cgameur}
+        \choose{#1}{#2}{#3}{#4}{\sgameExtraFields}{\fgameExtraFields}{\cgameExtraFields}
+        \optionT{fill}{#5}{
+            \choose{#1}{#2}{#3}{#4}{\sgameFill}{\fgameFill}{\cgameFill}
+        }
+        \optionT{markings}{#5}{
+            \choose{#1}{#2}{#3}{#4}{\sgameMarkings}{\fgameMarkings}{\cgameMarkings}
+        }
+    \end{tikzpicture}
+}

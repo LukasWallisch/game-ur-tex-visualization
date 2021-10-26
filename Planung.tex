@@ -1,158 +1,26 @@
 \documentclass{article}
 \usepackage{listings}
+\usepackage{gameUr}
 
-\input{GameBoard.tex}
-\input{GameboardCompact.sty}
-\input{GameboardFlat.sty}
-\input{GameboardStreched.sty}
+
+
 
 
 \begin{document}
 
 
-% \begin{lstlisting}[language=TeX]
-%     \begin{tikzpicture}
-%         \cgameur{2}{8}{4}
-%         \gameFill{2}{8}{4}
-%         \gameDirections{2}{8}{4}
-%         \gameMarkings{2}{8}{4}
-%         \gameExtraFieldsFill{2}{8}{4}
-%         \gameSavepoints{2}{8}{4}
-        
-%     \end{tikzpicture}
-% \end{lstlisting}
+\gameur{c}{2}{8}{4}
+
+\gameur{f}{2}{8}{4}
+
+\scalebox{.5}{% skalieren auf die doppelte Größe
+    \gameur{s}{2}{8}{4}[fill, markings]
+}
 
 
-% \begin{tikzpicture}
-%     \cgameur{2}{8}{4}
-%     \gameFill{2}{8}{4}
-%     \gameDirections{2}{8}{4}
-%     \gameMarkings{2}{8}{4}
-%     \gameExtraFieldsFill{2}{8}{4}
-%     \gameSavepoints{2}{8}{4}
-    
-% \end{tikzpicture}
+\gameur{c}{2}{8}{4}[fill, markings]
 
-
-% \begin{lstlisting}[language=TeX]
-%     \begin{tikzpicture}
-%         \cgameur{2}{8}{4}[-1]
-%         \gameFill{2}{8}{4}[-1]
-%         \gameDirections{2}{8}{4}[-1]
-%         \gameMarkings{2}{8}{4}[-1]
-%         \gameExtraFieldsFill{2}{8}{4}[-1]
-%         \gameSavepoints{2}{8}{4}[-1]
-        
-%     \end{tikzpicture}
-% \end{lstlisting}
-
-
-
-% \begin{tikzpicture}
-%     \cgameur{2}{8}{4}[-1]
-%     \gameFill{2}{8}{4}[-1]
-%     \gameDirections{2}{8}{4}[-1]
-%     \gameMarkings{2}{8}{4}[-1]
-%     \gameExtraFieldsFill{2}{8}{4}[-1]
-%     \gameSavepoints{2}{8}{4}[-1]
-    
-% \end{tikzpicture}
-
-
-% test
-
-\begin{tikzpicture}
-    \cgameur{2}{8}{4}
-    \cgameFill{2}{8}{4}
-    \cgameDirections{2}{8}{4}
-    \cgameMarkings{2}{8}{4}
-    \cgameExtraFieldsFill{2}{8}{4}
-    \cgameExtraFields{2}{8}{4}
-    \cgameSavepoints{2}{8}{4}
-    
-\end{tikzpicture}
-
-
-
-\begin{tikzpicture}
-    \cgameur{2}{8}{4}[-1]
-    \cgameFill{2}{8}{4}[-1]
-    \cgameDirections{2}{8}{4}[-1]
-    \cgameMarkings{2}{8}{4}[-1]
-    \cgameExtraFieldsFill{2}{8}{4}[-1]
-    \cgameExtraFields{2}{8}{4}[-1]
-    \cgameSavepoints{2}{8}{4}[-1]
-    
-\end{tikzpicture}
-
-
-
-\begin{tikzpicture}
-    \fgameur{2}{8}{4}
-    \fgameFill{2}{8}{4}
-    \fgameDirections{2}{8}{4}
-    % \fgameMarkings{2}{8}{4}
-    \fgameExtraFieldsFill{2}{8}{4}
-    \fgameExtraFields{2}{8}{4}
-    \fgameSavepoints{2}{8}{4}
-    
-\end{tikzpicture}
-
-
-
-\begin{tikzpicture}
-    \fgameur{2}{8}{4}[-1]
-    \fgameFill{2}{8}{4}[-1]
-    \fgameDirections{2}{8}{4}[-1]
-    \fgameMarkings{2}{8}{4}[-1]
-    \fgameExtraFieldsFill{2}{8}{4}[-1]
-    \fgameExtraFields{2}{8}{4}[-1]
-    \fgameSavepoints{2}{8}{4}[-1]
-    
-\end{tikzpicture}
-
-
-\begin{tikzpicture}
-    \fgameur{2}{8}{4}[-1]
-    \fgameExtraFields{2}{8}{4}[-1]
-    \fgameFill{2}{8}{4}[-1]
-    \fgameFieldnames{2}{8}{4}[-1]
-    \fgameExtraFieldnames{2}{8}{4}[-1]
-    
-\end{tikzpicture}
-
-
-\begin{tikzpicture}
-    \cgameur{2}{8}{4}[-1]
-    \cgameFill{2}{8}{4}[-1]
-    \cgameExtraFields{2}{8}{4}[-1]
-    \cgameFieldnames{2}{8}{4}[-1]
-    \cgameExtraFieldnames{2}{8}{4}[-1]
-    
-\end{tikzpicture}
-
-
-\begin{tikzpicture}
-    \sgameur{2}{8}{4}[-1]
-    \sgameExtraFields{2}{8}{4}[-1]
-    \sgameFill{2}{8}{4}[-1]
-    \sgameFieldnames{2}{8}{4}[-1]
-    \sgameExtraFieldnames{2}{8}{4}[-1]
-    \sgameDirections{2}{8}{4}
-    
-\end{tikzpicture}
-
-
-\begin{tikzpicture}
-    \sgameur{2}{8}{4}[-1]
-    \sgameFill{2}{8}{4}[-1]
-    \sgameExtraFieldsFill{2}{8}{4}[-1]
-    \sgameFieldnames{2}{8}{4}[-1]
-    \sgameMarkings{2}{8}{4}[-1]
-    \sgameExtraFieldnames{2}{8}{4}[-1]
-    
-    
-\end{tikzpicture}
+\gameur{f}{2}{8}{4}[fill]
 
 
 

@@ -13,8 +13,8 @@
 \usetikzlibrary{decorations.markings}
 
 
-\input{hatchpatterns.tex}
-\input{GameBoardHelpers.tex}
+\input{hatchpatterns.sty}
+\input{GameBoardHelpers.sty}
 
 \tikzset{
     % gamepathStyle
@@ -54,7 +54,7 @@
 
 
 
-\NewDocumentCommand{\gameur}{mmmmmmmmm}{
+\NewDocumentCommand{\@gameur}{mmmmmmmmm}{
     \setmacros{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
     
     \drawboxes{\prepareS}{\prepareE}{\brow}{}
@@ -113,12 +113,12 @@
     \setmacros{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
 
    
-    \drawcircle{\startXPos}{\brow}{}
-    \drawcircle{\endXPos}{\brow}{}
+    \drawcircle{\startXPos}{\brow}{double}
+    \drawcircle{\endXPos}{\brow}{thick}
     
     \shouldshow{\trow}{
-        \drawcircle{\startXPos}{\trow}{}
-        \drawcircle{\endXPos}{\trow}{}
+        \drawcircle{\startXPos}{\trow}{double}
+        \drawcircle{\endXPos}{\trow}{thick}
     }
 }
 
