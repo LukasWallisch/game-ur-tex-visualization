@@ -36,21 +36,27 @@
    {}
  }
 
- \NewDocumentCommand{\optionT}{mmm}
+\NewDocumentCommand{\optionT}{mmm}
  { \luwas_instring:nnn { #1 } { #2 } { #3 } }
-    \tl_new:N \l__luwas_instring_test_tl
-    \cs_new_protected:Nn \luwas_instring:nnn
-    {
-        \tl_set:Nn \l__luwas_instring_test_tl { #1 }
-        \regex_match:nnT { \u{l__luwas_instring_test_tl} } { #2 } { #3 }
+ \tl_new:N \l__luwas_instring_test_tl
+ \cs_new_protected:Nn \luwas_instring:nnn {
+      \tl_set:Nn \l__luwas_instring_test_tl { #1 }
+      \regex_match:nnT { \u{l__luwas_instring_test_tl} } { #2 } { #3 }
     }
+% \NewDocumentCommand{\optionTF}{mmmm}
+%  { \luwas_instring2:nnnn { #1 } { #2 } { #3 }{ #4 } }
+%  \tl_new:N \l__luwas_instring_test2_tl
+%  \cs_new_protected:Nn \luwas_instring2:nnnn {
+%      \tl_set:Nn \l__luwas_instring_test2_tl { #1 }
+%      \regex_match:nnTF { \u{l__luwas_instring_test2_tl} } { #2 } { #3 }{ #4 } 
+% }
          
         
 \ExplSyntaxOff
 
 
-\NewDocumentCommand{\gameur}{mmmmO{}}{
-    \begin{tikzpicture}
+\NewDocumentCommand{\gameur}{mmmmO{}O{}}{
+    \begin{tikzpicture}[#6]
         \choose{#1}{#2}{#3}{#4}{\sgameur}{\fgameur}{\@cgameur}
         \choose{#1}{#2}{#3}{#4}{\sgameExtraFields}{\fgameExtraFields}{\cgameExtraFields}
         \optionT{fill}{#5}{
@@ -58,6 +64,10 @@
         }
         \optionT{markings}{#5}{
             \choose{#1}{#2}{#3}{#4}{\sgameMarkings}{\fgameMarkings}{\cgameMarkings}
+        }
+        \optionT{names}{#5}{
+            \choose{#1}{#2}{#3}{#4}{\sgameExtraFieldnames}{\fgameExtraFieldnames}{\cgameExtraFieldnames}
+            \choose{#1}{#2}{#3}{#4}{\sgameFieldnames}{\fgameFieldnames}{\cgameFieldnames}
         }
     \end{tikzpicture}
 }

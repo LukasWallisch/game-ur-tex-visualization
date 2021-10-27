@@ -1,5 +1,6 @@
 \documentclass{article}
 \usepackage{listings}
+\usepackage{geometry}[scale=1]
 \usepackage{gameUr}
 
 
@@ -7,21 +8,23 @@
 
 
 \begin{document}
+\gameur{s}{2}{8}{4}[fill, names]
+\newline
 
+\gameur{s}{2}{8}{4}
+\newline
 
-\gameur{c}{2}{8}{4}
+\gameur{s}{2}{8}{4}
+\newline
 
-\gameur{f}{2}{8}{4}
+\gameur{s}{2}{8}{4}
+\newline
 
-\scalebox{.5}{% skalieren auf die doppelte Größe
-    \gameur{s}{2}{8}{4}[fill, markings]
-}
+\gameur{s}{2}{8}{4}[names]
+\newline
 
+\gameur{s}{2}{8}{4}[names]
+\newline
 
-\gameur{c}{2}{8}{4}[fill, markings]
-
-\gameur{f}{2}{8}{4}[fill]
-
-
-
+\gameur{s}{2}{8}{4}[names]
 \end{document}
